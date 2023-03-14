@@ -131,7 +131,9 @@ class VersionControlMainWindowExtension(MainWindowExtension):
 		def on_close(o):
 			if self.plugin.preferences['autosave'] \
 			or self.plugin.preferences['autosave_at_interval']:
+				self.notebook_ext.vcs.pull()
 				self.do_save_version()
+				self.notebook_ext.vcs.push()
 
 		self.window.connect('close', on_close)
 
@@ -530,6 +532,20 @@ class VCSApplicationBase(ConnectorMixin):
 		- hg commit -m <msg>           (file=None and message not empty)
 		- hg commit <file>             (file not None and message empty)
 		- hg commit                    (file=None and message empty)
+
+		@implementation: must be implemented in child class
+		"""
+		raise NotImplementedError
+
+	def push(self, remote):
+		"""FIXME Documentation
+
+		@implementation: must be implemented in child class
+		"""
+		raise NotImplementedError
+
+	def pull(self, remote):
+		"""FIXME Documentation
 
 		@implementation: must be implemented in child class
 		"""

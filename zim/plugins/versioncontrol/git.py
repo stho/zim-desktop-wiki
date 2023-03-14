@@ -108,6 +108,14 @@ class GITApplicationBackend(VCSApplicationBase):
 				params.append(self.path_arg(path))
 			return self.run(params)
 
+	def push(self, remote='origin'):
+		params = ['push', remote]
+		return self.run(params)
+
+	def pull(self, remote='origin'):
+		params = ['pull', remote]
+		return self.run(params)
+
 	def diff(self, versions=None, file=None):
 		"""
 		Runs:

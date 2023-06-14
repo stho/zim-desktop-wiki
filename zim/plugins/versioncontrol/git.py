@@ -113,7 +113,7 @@ class GITApplicationBackend(VCSApplicationBase):
 		return self.run(params)
 
 	def pull(self, remote='origin'):
-		params = ['pull', remote]
+		params = ['pull', '-r', remote]
 		return self.run(params)
 
 	def diff(self, versions=None, file=None):

@@ -131,8 +131,8 @@ class VersionControlMainWindowExtension(MainWindowExtension):
 		def on_close(o):
 			if self.plugin.preferences['autosave'] \
 			or self.plugin.preferences['autosave_at_interval']:
-				self.notebook_ext.vcs.pull()
 				self.do_save_version()
+				self.notebook_ext.vcs.pull()
 				self.notebook_ext.vcs.push()
 
 		self.window.connect('close', on_close)
